@@ -1,0 +1,51 @@
+# compiled output  
+/dist  
+/tmp  
+/out-tsc  
+  
+# dependencies  
+/node_modules 
+plugins/ 
+  
+# IDEs and editors  
+/.idea  
+.project  
+.classpath  
+.c9/  
+*.launch  
+.settings/  
+*.sublime-workspace  
+  
+# IDE - VSCode  
+.vscode/*  
+!.vscode/settings.json  
+!.vscode/tasks.json  
+!.vscode/launch.json  
+!.vscode/extensions.json  
+  
+# Platform iOS
+*.mode1v3
+*.perspectivev3
+*.pbxuser
+platforms/ios/build
+
+# Platform Android
+platforms/android/build.xml
+platforms/android/local.properties
+platforms/android/gradlew
+platforms/android/gradlew.bat
+platforms/android/gradle
+
+# misc  
+/.sass-cache  
+/connect.lock  
+/coverage  
+/libpeerconnection.log  
+npm-debug.log  
+yarn-error.log  
+testem.log  
+/typings  
+  
+# System Files  
+.DS_Store  
+Thumbs.db  
