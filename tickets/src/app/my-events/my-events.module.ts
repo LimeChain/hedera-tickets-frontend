@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { MyEventsPageRoutingModule } from './my-events-routing.module';
 
 import { MyEventsPage } from './my-events.page';
+import { EventComponent } from '../event/event.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyEventsPageRoutingModule
+    MyEventsPageRoutingModule,
   ],
-  declarations: [MyEventsPage]
+  declarations: [MyEventsPage, EventComponent]
 })
-export class MyEventsPageModule {}
+export class MyEventsPageModule { }

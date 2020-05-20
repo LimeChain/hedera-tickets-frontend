@@ -8,16 +8,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
-  },
-  {
     path: 'my-events',
     loadChildren: () => import('./my-events/my-events.module').then(m => m.MyEventsPageModule)
   },
   {
     path: 'events',
-    loadChildren: () => import('./events/events.module').then( m => m.EventsPageModule)
+    loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule)
   }
 ];
 

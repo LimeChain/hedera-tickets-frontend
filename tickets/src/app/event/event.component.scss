@@ -1,0 +1,9 @@
+ion-card{
+    width: 20%;
+    display: inline-block;
+
+    & ion-card-header{
+        text-align: center;
+        padding: 25%;
+    }
+}
