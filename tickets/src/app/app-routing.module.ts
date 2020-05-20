@@ -4,12 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'my-events',
     pathMatch: 'full'
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
+  },
+  {
+    path: 'my-events',
+    loadChildren: () => import('./my-events/my-events.module').then(m => m.MyEventsPageModule)
+  },
+  {
+    path: 'events',
+    loadChildren: () => import('./events/events.module').then( m => m.EventsPageModule)
   }
 ];
 
@@ -19,4 +27,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
