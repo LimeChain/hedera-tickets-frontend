@@ -14,6 +14,18 @@ const routes: Routes = [
   {
     path: 'events',
     loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'sign-out',
+    loadChildren: () => import('./sign-out/sign-out.module').then( m => m.SignOutPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }
 ];
 

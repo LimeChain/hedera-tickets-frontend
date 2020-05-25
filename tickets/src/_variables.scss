@@ -1,0 +1,34 @@
+// Media queries
+$xxs: "(max-width: 500px)";
+$xs: "(max-width: 768px)";
+$sm: "(max-width: 995px)";
+$md: "(max-width: 1200px)";
+$lg: "(max-width: 1800px)";
+$xl: "(min-width: 1800px)";
+
+// Colors
+$white: #fff;
+$green: #43c181;
+$light-green: #61d89b;
+$light-gray: #eff1f5;
+$gray: #F4F5F6;
+$gray-darker: #E9E9E9;
+$gray-darkest: rgb(207, 207, 207);
+$black: #1D1E1F;
+$orange: #EE702C;
+$orange-lighter: #FD9104;
+$purple: #896AAD;
+$blue: #1D3888;
+$blue-light: #89A6FF;
+$white-dark: #E4EBF7;
+$white-darker: #E2E8F0;
+$black: #000000;
+$height100: 100%;
+
+@mixin ellipsis($max-width) {
+    display: inline-block;
+    max-width: $max-width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

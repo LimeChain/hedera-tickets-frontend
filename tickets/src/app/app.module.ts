@@ -1,3 +1,6 @@
+import { ToastService } from './services/toast.service';
+import { LoadingService } from './services/loading.service';
+import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -8,6 +11,10 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import * as firebase from "firebase/app";
+import { environment } from 'src/environments/environment';
+firebase.initializeApp(environment.firebaseConfig);
+
 import { Globals } from './globals';
 
 @NgModule({
@@ -24,6 +31,9 @@ import { Globals } from './globals';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AuthService,
+    LoadingService,
+    ToastService,
     Globals
   ],
   bootstrap: [AppComponent]

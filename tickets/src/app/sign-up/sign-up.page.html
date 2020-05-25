@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>sign-up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding ion-justify-content-center">
+      <ion-col class="ion-no-padding ion-align-self-center" size-xs="12" size-sm="8" size-md="6" size-lg="6"
+        size-xl="3">
+        <div class="hedera-center">
+          <div>
+            <form [formGroup]="signUpForm">
+              <div class="ion-padding">
+                <div class="hedera-form-group">
+                  <ion-item class="hedera-input-control">
+                    <ion-input type="firstName" placeholder="First Name" formControlName="firstName"></ion-input>
+                  </ion-item>
+                  <div class="validation-errors" *ngIf="firstName.touched">
+                    <div class="error-message" *ngIf="firstName.invalid">
+                      Invalid First Name
+                    </div>
+                  </div>
+                </div>
+                <div class="hedera-form-group">
+                  <ion-item class="hedera-input-control">
+                    <ion-input type="lastName" placeholder="Last Name" formControlName="lastName"></ion-input>
+                  </ion-item>
+                  <div class="validation-errors" *ngIf="lastName.touched">
+                    <div class="error-message" *ngIf="lastName.invalid">
+                      Invalid Last Name
+                    </div>
+                  </div>
+                </div>
+                <div class="hedera-form-group full-width">
+                  <ion-item class="hedera-input-control">
+                    <ion-input type="email" placeholder="Email" formControlName="email">
+                    </ion-input>
+                  </ion-item>
+                  <div class="validation-errors" *ngIf="email.touched">
+                    <div class="error-message" *ngIf="email.invalid">
+                      Invalid Email
+
+                    </div>
+                  </div>
+                </div>
+                <div formGroupName="passwords">
+                  <div class="hedera-form-group full-width">
+                    <ion-item class="hedera-input-control">
+                      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <div class="validation-errors" *ngIf="password.touched">
+                      <div class="error-message" *ngIf="password.invalid">
+                        Invalid Password
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hedera-form-group full-width"
+                    [ngClass]="{'error-showed': repeatPassword.touched && repeatPassword.invalid}">
+                    <ion-item class="hedera-input-control">
+                      <ion-input type="password" placeholder="Repeat Password" formControlName="repeatPassword">
+                      </ion-input>
+                    </ion-item>
+                    <div class="validation-errors" *ngIf="repeatPassword.touched">
+                      <div class="error-message" *ngIf="repeatPassword.invalid">
+                        Invalid Password
+                      </div>
+                    </div>
+                    <div class="validation-errors" *ngIf="password.touched && repeatPassword.touched">
+                      <div class="error-message"
+                        [ngClass]="{'error-showed': repeatPassword.touched && repeatPassword.invalid}"
+                        *ngIf="passwords.invalid && passwords.errors != null && passwords.errors['passwordsDiffer']">
+                        Two passwords does not match
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="showSignUpErrorMessage" class="yoonify-form-group">
+                  <div class="validation-errors auth-error">
+                    <div class="error-message">
+                      {{signUpErrorMessage}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="ion-padding">
+              <ion-button class="hedera-button" size="large" expand="block" (click)="doSignup()"
+                [disabled]="signUpForm.invalid">
+                Continue</ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
