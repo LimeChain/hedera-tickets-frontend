@@ -38,3 +38,17 @@ ion-col{
         background-color: #179C55;
     }
 }
+
+@media screen and (max-width: 540px){
+    .main-event-info{
+        p{
+            right: 2%;
+        }
+    }
+
+    .book-btn{
+        button{
+            width: 100%;
+        }
+    }
+}
