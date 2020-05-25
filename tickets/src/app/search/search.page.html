@@ -5,8 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <h3>events:</h3>
-  <div *ngFor="let e of searchedEvents">
-    <p>{{e.name}}</p>
-  </div>
+  <searched-event *ngFor="let e of searchedEvents" [id]="e.id" [name]="e.name" [date]="e.date" [price]="e.price"
+    [picture]='e.picture'></searched-event>
 </ion-content>

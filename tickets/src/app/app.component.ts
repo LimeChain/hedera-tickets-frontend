@@ -56,12 +56,12 @@ export class AppComponent implements OnInit {
 
   onInput($event) {
     const input = $event.target.value;
-    this.dataService.addData(input);
     if (input === '') {
       this.router.navigate(['/my-events']);
     } else {
-      this.router.navigate(['/search']);
+      this.router.navigate(['search']);
     }
+    this.dataService.addData(input);
   }
 
   onCancel($event) {

@@ -17,4 +17,4 @@ import { EventsPage } from './events.page';
   ],
   declarations: [EventsPage]
 })
-export class EventsPageModule {}
+export class EventsPageModule { }

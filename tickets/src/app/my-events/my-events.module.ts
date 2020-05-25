@@ -8,7 +8,6 @@ import { MyEventsPageRoutingModule } from './my-events-routing.module';
 
 import { MyEventsPage } from './my-events.page';
 import { EventComponent } from '../event/event.component';
-import { BookingComponent } from '../booking/booking.component';
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import { BookingComponent } from '../booking/booking.component';
     IonicModule,
     MyEventsPageRoutingModule,
   ],
-  declarations: [MyEventsPage, EventComponent, BookingComponent]
+  declarations: [MyEventsPage, EventComponent]
 })
 export class MyEventsPageModule { }
