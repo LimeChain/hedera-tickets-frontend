@@ -5,5 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <event *ngFor="let e of events" [name]="e.name" [date]="e.date" [price]="e.price"></event>
+  <event *ngFor="let e of events" [id]="e.id" [name]="e.name" [date]="e.date" [price]="e.price" [picture]='e.picture'>
+  </event>
 </ion-content>

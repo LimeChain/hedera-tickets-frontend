@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class EventComponent {
   @Input()
+  id: number;
+
+  @Input()
   name: string;
 
   @Input()
@@ -14,4 +17,7 @@ export class EventComponent {
 
   @Input()
   price: string
+
+  @Input()
+  picture: string
 }

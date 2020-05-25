@@ -13,6 +13,7 @@ import * as firebase from "firebase/app";
 import { environment } from 'src/environments/environment';
 firebase.initializeApp(environment.firebaseConfig);
 
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ firebase.initializeApp(environment.firebaseConfig);
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    AuthService
+    AuthService,
+    Globals
   ],
   bootstrap: [AppComponent]
 })
