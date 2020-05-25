@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   public loginForm: FormGroup;
   public authErrorMessage: string;
   public showAuthErrorMessage: boolean;
-  public toastMessage: string;
+  public toastMessage = 'Login is successful';
 
   constructor(private formBuilder: FormBuilder, private router: Router, private loadingService: LoadingService, private toastService: ToastService, private authService: AuthService, private navCtrl: NavController) {
     this.loginForm = this.formBuilder.group({
@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
 
       await this.loadingService.showLoader();
       await this.authService.login(request);
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
       await this.loadingService.hideLoader();
       await this.toastService.showToast(this.toastMessage, 3000)
     } catch (e) {

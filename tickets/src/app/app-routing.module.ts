@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -9,23 +10,25 @@ const routes: Routes = [
   },
   {
     path: 'my-events',
-    loadChildren: () => import('./my-events/my-events.module').then(m => m.MyEventsPageModule)
+    loadChildren: () => import('./my-events/my-events.module').then(m => m.MyEventsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'events',
-    loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule)
+    loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)
   },
   {
     path: 'sign-out',
-    loadChildren: () => import('./sign-out/sign-out.module').then( m => m.SignOutPageModule)
+    loadChildren: () => import('./sign-out/sign-out.module').then(m => m.SignOutPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   }
 ];
 

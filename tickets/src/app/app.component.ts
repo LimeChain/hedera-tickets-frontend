@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -11,25 +12,48 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'My events',
-      url: 'my-events',
-      icon: 'today'
-    },
-    {
-      title: 'More events',
-      url: 'events',
-      icon: 'calendar'
-    }
-  ];
+  public appPages;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private authService: AuthService
   ) {
     this.initializeApp();
+    this.appPages = [
+      {
+        title: 'Login',
+        url: 'login',
+        icon: 'person'
+      },
+      {
+        title: 'Sign Up',
+        url: 'sign-up',
+        icon: 'log-in'
+      }
+    ];
+    this.authService.currentUser.subscribe(async (user) => {
+      if (user) {
+        this.appPages = [
+          {
+            title: 'My events',
+            url: 'my-events',
+            icon: 'today'
+          },
+          {
+            title: 'More events',
+            url: 'events',
+            icon: 'calendar'
+          },
+          {
+            title: 'Sign out',
+            url: 'sign-out',
+            icon: 'log-out'
+          }
+        ];
+      }
+    });
   }
 
   initializeApp() {
