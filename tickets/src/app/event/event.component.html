@@ -1,10 +1,10 @@
-<ion-card>
+<ion-card [routerLink]="['booking', id]">
+  <img [src]='picture' />
   <ion-card-header>
+    <ion-card-subtitle>{{date}}</ion-card-subtitle>
     <ion-card-title>{{name}}</ion-card-title>
   </ion-card-header>
-
   <ion-card-content>
-    <p>{{date}}</p>
-    <p>{{price}}</p>
+    {{price}}
   </ion-card-content>
 </ion-card>
