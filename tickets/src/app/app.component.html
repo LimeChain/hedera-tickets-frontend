@@ -14,7 +14,8 @@
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-searchbar placeholder="Event name" showCancelButton="focus"></ion-searchbar>
+        <ion-searchbar (ionInput)="onInput($event)" (ionCancel)="onCancel($event)" placeholder="Event name"
+          showCancelButton="focus"></ion-searchbar>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

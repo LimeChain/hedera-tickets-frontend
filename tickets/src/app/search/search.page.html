@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3>events:</h3>
+  <div *ngFor="let e of searchedEvents">
+    <p>{{e.name}}</p>
+  </div>
+</ion-content>
