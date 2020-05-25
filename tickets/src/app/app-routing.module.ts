@@ -17,7 +17,19 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+    loadChildren: () => import('./search/search.module').then(m => m.SearchPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./sign-up/sign-up.module').then(m => m.SignUpPageModule)
+  },
+  {
+    path: 'sign-out',
+    loadChildren: () => import('./sign-out/sign-out.module').then(m => m.SignOutPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   }
 ];
 

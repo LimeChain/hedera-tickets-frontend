@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Inject, forwardRef, ɵSWITCH_VIEW_CONTAINER_REF_FACTORY__POST_R3__ } from '@angular/core';
 import { Globals } from '../globals';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-search',

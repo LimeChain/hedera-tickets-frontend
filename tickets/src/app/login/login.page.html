@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-no-padding ion-justify-content-center">
+      <ion-col class="ion-no-padding ion-align-self-center" size-xs="12" size-sm="8" size-md="6" size-lg="6"
+        size-xl="3">
+        <div class="hedera-center">
+          <div>
+            <form [formGroup]="loginForm">
+              <div class="ion-padding">
+
+                <div class="hedera-form-group">
+                  <ion-item class="hedera-input-control">
+                    <ion-input type="email" placeholder="Email" formControlName="email">
+                    </ion-input>
+                  </ion-item>
+                  <div class="validation-errors" *ngIf="email.touched">
+                    <div class="error-message" *ngIf="email.invalid">
+                      Invalid Email
+
+                    </div>
+                  </div>
+                </div>
+                <div class="hedera-form-group">
+                  <ion-item class="yoonify-input-control">
+                    <ion-input type="password" placeholder="Password" formControlName="password">
+                    </ion-input>
+                  </ion-item>
+                  <div class="validation-errors" *ngIf="password.touched">
+                    <div class="error-message" *ngIf="password.invalid">
+                      Password is invalid
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="showAuthErrorMessage" class="yoonify-form-group">
+                  <div class="validation-errors auth-error">
+                    <div class="error-message">
+                      {{authErrorMessage}}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+            <div class="ion-padding">
+              <ion-button class="hedera-button" size="large" expand="block" (click)="doLogin()"
+                [disabled]="loginForm.invalid">
+                Login</ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
