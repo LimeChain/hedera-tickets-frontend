@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, forwardRef } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Globals } from './globals';
+import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +30,9 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private router: Router,
+    private dataService: DataService
   ) {
     this.initializeApp();
   }
@@ -43,6 +48,23 @@ export class AppComponent implements OnInit {
     const path = window.location.pathname.split('/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.url.toLowerCase() === path.toLowerCase());
+      if (this.selectedIndex < 0) {
+        this.selectedIndex = 0;
+      }
     }
+  }
+
+  onInput($event) {
+    const input = $event.target.value;
+    this.dataService.addData(input);
+    if (input === '') {
+      this.router.navigate(['/my-events']);
+    } else {
+      this.router.navigate(['/search']);
+    }
+  }
+
+  onCancel($event) {
+    this.router.navigate(['/my-events']);
   }
 }
