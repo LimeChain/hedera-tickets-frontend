@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -9,11 +10,13 @@ const routes: Routes = [
   },
   {
     path: 'my-events',
-    loadChildren: () => import('./my-events/my-events.module').then(m => m.MyEventsPageModule)
+    loadChildren: () => import('./my-events/my-events.module').then(m => m.MyEventsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'events',
-    loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule)
+    loadChildren: () => import('./events/events.module').then(m => m.EventsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'search',
