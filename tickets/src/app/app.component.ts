@@ -56,6 +56,19 @@ export class AppComponent implements OnInit {
             icon: 'log-out'
           }
         ];
+      } else {
+        this.appPages = [
+          {
+            title: 'Login',
+            url: 'login',
+            icon: 'person'
+          },
+          {
+            title: 'Sign Up',
+            url: 'sign-up',
+            icon: 'log-in'
+          }
+        ];
       }
     });
   }

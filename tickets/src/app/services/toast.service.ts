@@ -13,7 +13,7 @@ export class ToastService {
     public async showToast(message, duration?) {
         this.toast = await this.toastController.create({
             message: message,
-            cssClass: "yoonify-toast",
+            cssClass: "hedera-toast",
             duration: duration,
         });
         await this.toast.present();
