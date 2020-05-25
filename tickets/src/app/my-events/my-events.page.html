@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>My events</ion-title>
+    <p *ngIf="userData" class="desktop-title">({{userData.email}})</p>
+    <p *ngIf="userData" class="desktop-title">{{userData.firstName}} {{userData.lastName}}</p>
   </ion-toolbar>
 </ion-header>
 

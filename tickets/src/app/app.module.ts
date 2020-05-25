@@ -1,3 +1,4 @@
+import { UserService } from './services/user.services';
 import { ToastService } from './services/toast.service';
 import { LoadingService } from './services/loading.service';
 import { AuthService } from './services/auth.service';
@@ -32,6 +33,7 @@ import { Globals } from './globals';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthService,
+    UserService,
     LoadingService,
     ToastService,
     Globals

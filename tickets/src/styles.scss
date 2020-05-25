@@ -55,35 +55,47 @@ body {
 //     }
 // }
 
-// ion-toolbar {
-//     --background: #354e76;
-//     --border-color: #354e76;
-//     --min-height: 60px;
-//     --color: white;
+ion-toolbar {
+    // --background: #354e76;
+    // --border-color: #354e76;
+    // --min-height: 60px;
+    // --color: white;
 
-//     .desktop-title {
-//         display: none;
-//     }
+    // .desktop-title {
+    //     display: none;
+    // }
 
-//     @media (min-width: 992px) {
+    // @media (min-width: 992px) {
 
-//         --background: #fff;
-//         --border-color: #fff;
-//         --min-height: 68px;
-//         --color: black;
+    //     --background: #fff;
+    //     --border-color: #fff;
+    //     --min-height: 68px;
+    //     --color: black;
 
-//         ion-title {
-//             display: none;
-//         }
+    //     ion-title {
+    //         display: none;
+    //     }
 
-//         .desktop-title {
-//             color: black;
-//             float: right;
-//             display: inline-block;
-//             margin-right: 16px;
-//         }
-//     }
-// }
+    //     .desktop-title {
+    //         color: black;
+    //         float: right;
+    //         display: inline-block;
+    //         margin-right: 16px;
+    //     }
+    // }
+
+    ion-title {
+        display: inline-block;
+    }
+
+    .desktop-title {
+        color: black;
+        float: right;
+        display: inline-block;
+        margin: 0px;
+        margin-right: 16px;
+    }
+}
 
 ion-input {
     --placeholder-color: $black !important;
