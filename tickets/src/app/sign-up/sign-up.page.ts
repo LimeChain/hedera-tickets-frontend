@@ -1,3 +1,5 @@
+import { ToastService } from './../services/toast.service';
+import { LoadingService } from './../services/loading.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -21,13 +23,16 @@ export class SignUpPage implements OnInit {
   public loginInserted = false;
   public toastMessage = 'Sign up is successful';
 
+
   constructor(private router: Router,
     public authService: AuthService,
+    private loadingService: LoadingService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     public toastController: ToastController,
     private navCtrl: NavController,
-    public modalController: ModalController) {
+    public modalController: ModalController,
+    public toastService: ToastService) {
     this.signUpForm = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -45,8 +50,7 @@ export class SignUpPage implements OnInit {
             Validators.minLength(6)
           ]
         ]
-      }, { validator: SignUpFormValidators.differentPasswordsValidator }),
-      termsAndConditions: [false, [Validators.requiredTrue]]
+      }, { validator: SignUpFormValidators.differentPasswordsValidator })
     });
 
   }
@@ -60,7 +64,7 @@ export class SignUpPage implements OnInit {
 
   // Attempt to signup in through our User service
   async doSignup() {
-    let request = {
+    const request = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
       email: this.email.value,
@@ -69,12 +73,13 @@ export class SignUpPage implements OnInit {
 
     // TO DO Save all the related info in database (first name, last name, phone and etc)
     try {
-      //await this.loadingService.showLoader();
+      await this.loadingService.showLoader();
       await this.authService.signup(request);
       this.router.navigate(['']);
-      //await this.loadingService.hideLoader();
+      await this.loadingService.hideLoader();
+      await this.toastService.showToast(this.toastMessage, 3000);
     } catch (e) {
-      // await this.loadingService.hideLoader();
+      await this.loadingService.hideLoader();
       this.handleAuthErrorMessages(e);
     }
   }

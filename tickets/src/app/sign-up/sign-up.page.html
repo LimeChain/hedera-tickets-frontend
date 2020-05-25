@@ -9,11 +9,11 @@
     <ion-row class="ion-no-padding ion-justify-content-center">
       <ion-col class="ion-no-padding ion-align-self-center" size-xs="12" size-sm="8" size-md="6" size-lg="6"
         size-xl="3">
-        <div class="hedera-center desktop-hedera-center">
-          <div class="login-signup-tabs desktop">
+        <div class="hedera-center">
+          <div>
             <form [formGroup]="signUpForm">
               <div class="ion-padding">
-                <div class="hedera-form-group left">
+                <div class="hedera-form-group">
                   <ion-item class="hedera-input-control">
                     <ion-input type="firstName" placeholder="First Name" formControlName="firstName"></ion-input>
                   </ion-item>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="hedera-form-group full-width">
                   <ion-item class="hedera-input-control">
-                    <ion-input type="email" [disabled]="isInvited" placeholder="Email" formControlName="email">
+                    <ion-input type="email" placeholder="Email" formControlName="email">
                     </ion-input>
                   </ion-item>
                   <div class="validation-errors" *ngIf="email.touched">
@@ -76,9 +76,16 @@
                     </div>
                   </div>
                 </div>
+                <div *ngIf="showSignUpErrorMessage" class="yoonify-form-group">
+                  <div class="validation-errors auth-error">
+                    <div class="error-message">
+                      {{signUpErrorMessage}}
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
-            <div class="ion-padding desktop-button-container">
+            <div class="ion-padding">
               <ion-button class="hedera-button" size="large" expand="block" (click)="doSignup()"
                 [disabled]="signUpForm.invalid">
                 Continue</ion-button>

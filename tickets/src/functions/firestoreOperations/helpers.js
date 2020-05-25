@@ -8,16 +8,13 @@ const Errors = require('./errors');
 
 class Helper {
 
-	static async createUser(accountInfo, signedUserId, userType, tenantRefId) {
+	static async createUser(accountInfo, signedUserId) {
 		try {
 			await firestore.collection(constants.DATABASE_COLLECTION.USERS_COLLECTION).doc(signedUserId).set({
 				firstName: accountInfo.firstName,
 				lastName: accountInfo.lastName,
 				email: accountInfo.email,
-				uid: signedUserId,
-				tenant: tenantRefId,
-				kycVerified: false,
-				type: userType
+				uid: signedUserId
 			})
 		} catch (e) {
 			console.error(`Something went wrong creating a new user with ID ${signedUserId}. Error: ${e}`);

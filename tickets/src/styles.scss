@@ -182,9 +182,9 @@ ion-note {
 
 .hedera-button {
     text-transform: none;
-    --background: linear-gradient(270deg, #EE702C 0%, #FD9104 100%);
-    --background-hover: linear-gradient(270deg, #EE702C 0%, #FD9104 10%);
-    --background-activated: linear-gradient(270deg, #EE702C 0%, #FD9104 10%);
+    --background: linear-gradient(270deg, rgb(83, 238, 44) 0%, rgb(83, 238, 60) 100%);
+    --background-hover: linear-gradient(270deg, rgb(83, 238, 44) 0%, rgb(83, 238, 60) 10%);
+    --background-activated: linear-gradient(270deg, rgb(83, 238, 44) 0%, rgb(83, 238, 60) 10%);
     --border-radius: 5px;
 
     &.reverse-color {

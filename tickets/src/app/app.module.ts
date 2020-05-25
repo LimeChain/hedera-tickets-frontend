@@ -1,3 +1,5 @@
+import { ToastService } from './services/toast.service';
+import { LoadingService } from './services/loading.service';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,6 +32,8 @@ import { Globals } from './globals';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AuthService,
+    LoadingService,
+    ToastService,
     Globals
   ],
   bootstrap: [AppComponent]

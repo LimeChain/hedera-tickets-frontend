@@ -32,7 +32,7 @@ let signUpUser = functions.https.onCall(async (data, context) => {
         Helper.throwError('invalid-argument', 'Invalid Argument');
     }
 
-    await Helper.createUser(accountInfo, uid, userType);
+    await Helper.createUser(accountInfo, uid);
 
 
     console.log(`Successfully created new User with ID [${uid}]`);
