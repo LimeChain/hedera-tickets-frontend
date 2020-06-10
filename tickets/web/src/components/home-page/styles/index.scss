@@ -19,10 +19,10 @@
 
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 650px;
   padding: 30px;
   
   @media screen and (max-width: 760px) {

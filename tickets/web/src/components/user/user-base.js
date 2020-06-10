@@ -8,7 +8,15 @@ class UserBaseComponent extends Component {
         passwordText: '',
     };
 
-    async componentDidMount () { }
+    constructor () {
+        super();
+
+        this.onFirstName = this.onFirstName.bind(this);
+        this.onLastName = this.onLastName.bind(this);
+        this.onPassword = this.onPassword.bind(this);
+
+        this.process = this.process.bind(this);
+    }
 
     render () {
         return void 0;
@@ -22,15 +30,15 @@ class UserBaseComponent extends Component {
         this.setState({ lastNameText: event.target.value });
     }
 
-    onPasswordName (event) {
+    onPassword (event) {
         this.setState({ passwordText: event.target.value });
     }
 
     async process () {
         const userDetails = {
-            firstName: super.state.firstNameText,
-            lastName: super.state.lastNameText,
-            password: super.state.passwordText
+            firstName: this.state.firstNameText,
+            lastName: this.state.lastNameText,
+            password: this.state.passwordText
         };
 
         const hederaAccount = this.processUserData(userDetails);
@@ -39,10 +47,7 @@ class UserBaseComponent extends Component {
         localStorage.setItem('userDetails', userDetails);
         localStorage.setItem('hederaAccount', hederaAccount);
 
-        super.clearFields();
-
-        // Load the account into browser memory
-        // Show successful message
+        this.clearFields();
     }
 
     async processUserData () { }

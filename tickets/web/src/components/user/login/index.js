@@ -9,17 +9,11 @@ import HederaClient from './../../../clients/hedera-api';
 
 class LoginComponent extends UserBaseComponent {
 
-    constructor () {
-        super();
-    }
-
-    async componentDidMount () {
-        this.process = this.process.bind(this);
-    }
-
     render () {
         return (
-            <LoginView />
+            <div>
+                {LoginView(this)}
+            </div>
         );
     }
 

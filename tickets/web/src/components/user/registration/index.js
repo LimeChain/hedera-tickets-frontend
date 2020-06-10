@@ -9,13 +9,11 @@ import { RegistrationView } from './view';
 
 class RegistrationComponent extends UserBaseComponent {
 
-    async componentDidMount () {
-        this.process = this.process.bind(this);
-    }
-
     render () {
         return (
-            <RegistrationView />
+            <div>
+                {RegistrationView(this)}
+            </div>
         )
     }
 
