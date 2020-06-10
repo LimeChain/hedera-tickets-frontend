@@ -9,12 +9,8 @@ import HederaClient from './../../../clients/hedera-api';
 
 class LoginComponent extends UserBaseComponent {
 
-    render () {
-        return (
-            <div>
-                {LoginView(this)}
-            </div>
-        );
+    constructor () {
+        super(LoginView);
     }
 
     async processUserData (userDetails) {

@@ -13,7 +13,7 @@ import RegistrationComponent from './../user/registration';
 class HomePage extends Component {
 
     state = {
-        redirect: '/'
+        redirect: null
     }
 
     constructor () {
@@ -24,33 +24,29 @@ class HomePage extends Component {
     }
 
     render () {
-        const HomePageViewRender = HomePageView.bind(this);
-
         return (
             <div className="application">
                 {this.renderRedirect()}
-                <Route exact path='/' component={HomePageViewRender}></Route>
-                <Route exact path='/user/login' component={LoginComponent}></Route>
-                <Route exact path='/user/registration' component={RegistrationComponent}></Route>
-
             </div>
         );
     }
 
     renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect} />
+        if (!this.state.redirect) {
+            return HomePageView(this);
         }
+
+        return this.state.redirect;
     }
 
     async login () {
         // Redirect to login
-        this.setState({ redirect: '/user/login' });
+        this.setState({ redirect: <LoginComponent /> });
     }
 
     async register () {
         // Redirect to registration
-        this.setState({ redirect: '/user/registration' });
+        this.setState({ redirect: <RegistrationComponent /> });
     }
 }
 

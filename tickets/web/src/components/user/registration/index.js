@@ -9,12 +9,8 @@ import { RegistrationView } from './view';
 
 class RegistrationComponent extends UserBaseComponent {
 
-    render () {
-        return (
-            <div>
-                {RegistrationView(this)}
-            </div>
-        )
+    constructor () {
+        super(RegistrationView);
     }
 
     async processUserData (userDetails) {

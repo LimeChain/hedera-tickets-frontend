@@ -1,4 +1,7 @@
+import React from 'react';
 import { Component } from 'react';
+
+import DashboardComponent from './../dashboard';
 
 class UserBaseComponent extends Component {
 
@@ -6,10 +9,14 @@ class UserBaseComponent extends Component {
         firstNameText: '',
         lastNameText: '',
         passwordText: '',
+        redirect: false
     };
 
-    constructor () {
+    constructor (view) {
         super();
+        this.view = view;
+
+        this.renderRedirect = this.renderRedirect.bind(this);
 
         this.onFirstName = this.onFirstName.bind(this);
         this.onLastName = this.onLastName.bind(this);
@@ -19,7 +26,20 @@ class UserBaseComponent extends Component {
     }
 
     render () {
-        return void 0;
+        return (
+            <div >
+                {this.renderRedirect()}
+            </div>
+
+        );
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <DashboardComponent />
+        }
+
+        return this.view(this);
     }
 
     onFirstName (event) {
@@ -41,13 +61,13 @@ class UserBaseComponent extends Component {
             password: this.state.passwordText
         };
 
-        const hederaAccount = this.processUserData(userDetails);
+        // const hederaAccount = this.processUserData(userDetails);
 
         // Load the account into browser memory
-        localStorage.setItem('userDetails', userDetails);
-        localStorage.setItem('hederaAccount', hederaAccount);
+        // localStorage.setItem('userDetails', userDetails);
+        // localStorage.setItem('hederaAccount', hederaAccount);
 
-        this.clearFields();
+        this.setState({ redirect: true });
     }
 
     async processUserData () { }
