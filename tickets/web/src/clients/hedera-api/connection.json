@@ -1,0 +1,12 @@
+{
+    "url": "/api",
+    "ENDPOINTS": {
+        "USER": {
+            "REGISTER": "/user/register",
+            "LOGIN": "/user/login"
+        },
+        "EVENT": {
+            "CREATE": "/event/create"
+        }
+    }
+}
