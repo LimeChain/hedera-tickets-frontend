@@ -14,17 +14,21 @@ class HederaAPIClient extends BaseClient {
     }
 
     async registerUser (userDetails) {
-        await super.executePOSTRequest(
+        const result = await super.executePOSTRequest(
             connection.url + connection.ENDPOINTS.USER.REGISTER,
             userDetails
         );
+
+        return result.data;
     }
 
     async loginUser (userCredentials) {
-        await super.executePOSTRequest(
+        const result = await super.executePOSTRequest(
             connection.url + connection.ENDPOINTS.USER.LOGIN,
             userCredentials
         );
+
+        return result.data;
     }
 
     async registerEvent (eventDetails) {
@@ -32,6 +36,15 @@ class HederaAPIClient extends BaseClient {
             connection.url + connection.ENDPOINTS.EVENT.CREATE,
             eventDetails
         );
+    }
+
+
+    async getLastAmountForGroup (groupID) {
+        // Todo: implement
+    }
+
+    async getEventGroups (eventName) {
+        // Todo: implement
     }
 }
 

@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.user-details-body {
+	background-color: transparent;
+	font-family: Montserrat, sans-serif;
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+  	min-height: 100vh;
+	margin: 0;
+}
+
+.user-details-name {
+	margin: 10px 0;
+}
+
+.user-details-balance {
+  padding-top: 40px;
+	margin: 5px 0;
+	text-transform: uppercase;
+}
+
+.img {
+  position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 20%;
+    overflow: hidden;
+    background-size: cover;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(.001deg);
+    transition: transform .35s ease-in-out;
+}
+
+.user-details-container {
+  background: linear-gradient(to bottom, #65de5f 0%,#d1d1d1 50%,white 50%,#d1d1d1 50%,#ff5c5c 100%);
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: rgb(71, 73, 82);
+	padding-top: 30px;
+	position: relative;
+	width: 350px;
+	max-width: 100%;
+  text-align: center;
+  height: 100vh;
+}
+
+
+.user-details-container .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+	padding: 7px;
+}
+
+button.primary {
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+	padding: 10px 25px;
+}
+
+button.primary.ghost {
+	background-color: transparent;
+	color: #02899C;
+}
