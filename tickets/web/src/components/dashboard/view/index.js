@@ -4,7 +4,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import UserDetails from './../components/user-details';
 
 import AllEventsComponent from './../components/event/all-events';
-import MyEventsComponent from './../components/event/my-events';
+import MyTicketsView from './../components/event/my-tickets';
 import EventDetailsComponent from './../components/event/event-details';
 
 export const DashboardView = function (context) {
@@ -17,8 +17,7 @@ export const DashboardView = function (context) {
                         <div className="nav">
                             <NavLink className="nav-item" exact to="/">All Events</NavLink>
                             <NavLink className="nav-item" exact to="/event">Event Details</NavLink>
-                            <NavLink className="nav-item" exact to="/event/my">My Events</NavLink>
-                            <NavLink className="nav-item" exact to="/event/registration">Register Event</NavLink>
+                            <NavLink className="nav-item" exact to="/tickets/my">My Tickets</NavLink>
                             <span className="nav-indicator"></span>
                         </div>
                     </div>
@@ -27,8 +26,7 @@ export const DashboardView = function (context) {
                         <Switch>
                             <Route exact path="/" component={AllEventsComponent} />
                             <Route exact path="/event" component={EventDetailsComponent} />
-                            <Route exact path="/event/my" component={MyEventsComponent} />
-                            <Route exact path="/event/registration" />
+                            <Route exact path="/tickets/my" component={MyTicketsView} />
                         </Switch>
                     </div>
 

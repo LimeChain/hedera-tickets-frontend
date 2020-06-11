@@ -8,7 +8,7 @@ export const UserDetailsView = function (context) {
                 <h3 className="user-details-name">Lyubomir Kiprov</h3>
                 <h6 className="user-details-balance">Balance: {context.balance}</h6>
                 <div className="buttons">
-                    <button className="primary">
+                    <button className="primary" onClick={context.withdraw}>
                         Withdraw
 		                </button>
                 </div>

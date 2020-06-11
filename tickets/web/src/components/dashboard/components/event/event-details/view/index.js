@@ -9,9 +9,13 @@ export const EventDetailsView = function (context) {
             <div className="event-details-card">
                 <button className="event-buy" >Buy</button>
 
-                <div className="event-details-card-cover"><img src={SignupIMG} />                </div>
+                <div className="event-details-card-cover"><img src={SignupIMG} /></div>
 
-                <h5 className="event-details-text" >Text messages are used for personal, family, business and social purposes. Governmental and non-governmental organizations use text messaging for communication between colleagues. In the 2010s, the sending of short informal messages has become an acc</h5>
+                <h5 className="event-details-text" >
+                    <p>Tomorrowland cannot take place in 2020 due to the worldwide coronavirus outbreak and the governmental order that has been issued in that regard.</p>
+                    <p>The 16th edition of Tomorrowland will take place in the summer of 2021 and the dates will be July 16–18 and July 23–25.</p>
+                    <p>As a general guideline, we can already say that all tickets purchased for Tomorrowland 2020 will be transferred to Tomorrowland 2021.</p>
+                </h5>
                 <div className="chart" onLoadStart={context.loadChart}>
                     {/* <Chart data={context.data} axes={context.axes} /> */}
                 </div>
