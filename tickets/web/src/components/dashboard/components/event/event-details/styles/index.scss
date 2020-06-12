@@ -7,38 +7,11 @@
 }
 
 .event-details-card{
-  width: 90%;
-  height: 120px;
+  width: 100%;
+  height: 150px;
   position: relative;
   border-radius: 10%;
-  margin: 10px;
   transition: 0.4s ease-out;
-}
-
-.event-buy{
-  cursor: pointer;
-  background: none;
-  width: 100%;
-  border: none;
-  border-radius: 25px;
-  color: #1884c9;
-  background-color: #e3f4ff;
-  -webkit-align-self: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
-  font-size: 19px;
-  font-size: 1.2rem;
-  font-family: roboto;
-  font-weight: 300;
-  line-height: 2.5em;
-  margin-top: auto;
-  margin-bottom: 5px;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-}
-
-.event-buy:hover{
-  background-color: #c5dceb;
 }
 
 .event-details-card-cover img {
@@ -49,7 +22,8 @@
 }
 
 .event-details-text{
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 20%;
   margin-bottom: 2%;
   text-align: left;
   color: #17141d;
@@ -57,7 +31,44 @@
   word-wrap: break-word;
 }
 
-.chart{
+.event-details-card {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.event-details-card-inner {
+  position: relative;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.event-details-card:hover .event-details-card-inner {
+  transform: rotateY(180deg);
+}
+
+.event-details-card-front, .event-details-card-back {
+  position: absolute;
   width: 100%;
-  height: 300px;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.event-details-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.event-details-card-back {
+  transform: rotateY(180deg);
+  border-radius: 1%;
+}
+
+.event-details-back-title{
+  color: #fe9797;
+  padding-top: 5%;
+  text-align: center;
+  font-size: 50px;
 }

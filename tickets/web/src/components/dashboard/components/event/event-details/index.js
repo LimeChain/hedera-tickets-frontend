@@ -7,9 +7,14 @@ import { AES, enc } from 'crypto-js'
 import * as HederaSDK from '../../../../../sdk';
 import HederaAPIClient from './../../../../../clients/hedera-api'
 
+import TradeComponent from './../trade';
 import { EventDetailsView } from './view';
 
 class EventDetailsComponent extends Component {
+
+    state = {
+        redirect: false
+    }
 
     constructor () {
         super();
@@ -21,38 +26,33 @@ class EventDetailsComponent extends Component {
 
         // this.hederaSDK = HederaSDK(hederaAccount.name, privateKey);
 
-        this.buy = this.buy.bind(this);
+        // this.buy = this.buy.bind(this);
+
+        this.renderRedirect = this.renderRedirect.bind(this);
+        this.showTradeComponent = this.showTradeComponent.bind(this);
     }
 
     render () {
         return (
             <div className="events-container">
-                {EventDetailsView(this)}
+                {this.renderRedirect()}
             </div>
         );
     }
 
-    // Todo: Move in into another page
-    // async loadChart (eventName) {
-    //     // Todo: get event tickets prices
-    //     const eventGroups = await HederaAPIClient.getEventGroups(eventName);
-    //     this.data = [
-    //         {
-    //             label: 'Series 1',
-    //             data: [
-    //                 [0, 1],
-    //                 [1, 2],
-    //                 [2, 4],
-    //                 [3, 2],
-    //                 [4, 7],
-    //             ],
-    //         },
-    //     ];
-    //     this.axes = [
-    //         { primary: true, type: 'linear', position: 'bottom' },
-    //         { type: 'linear', position: 'left' },
-    //     ]
-    // }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <TradeComponent />;
+        }
+
+        return EventDetailsView(this);
+    }
+
+
+    async showTradeComponent () {
+        this.setState({ redirect: true });
+    }
 
     async buy (ticketGroupID) {
         // const amount = await HederaAPIClient.getLastAmountForGroup(ticketGroupID)
