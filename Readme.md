@@ -1,5 +1,7 @@
 # Hedera Tickets front-end
 
+![App-architecture](./TicketsArchitecture.png)
+
 ### Contract
 The contract is deployed on the **TEST** network. If someone else has played with the app, the curve price could be already set
 
