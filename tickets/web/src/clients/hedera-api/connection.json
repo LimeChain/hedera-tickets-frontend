@@ -1,11 +1,14 @@
 {
-    "url": "/api",
+    "url": "http://localhost:3000/api",
     "ENDPOINTS": {
         "USER": {
             "REGISTER": "/user/register",
             "LOGIN": "/user/login"
         },
         "EVENT": {
+            "PRICE": "/event/group/price",
+            "UPDATE_PRICE": "/event/group/price/update",
+            "HISTORY": "/event/group/history",
             "CREATE": "/event/create"
         }
     }

@@ -24,25 +24,28 @@ export class TicketsStore extends BaseContract {
             .addAddress(this.provider.accountAddress);
 
         const result = await super.read(FUNCTION_NAMES.WITHDRAWERS, fnParams);
-        return result.getUint256(0).toString()
+        return result.getUint256(0).div(10000000000000000).toFixed(5)
     }
 
     async ownedTickets () {
         const result = await super.read(FUNCTION_NAMES.TICKET_OWNER, null);
 
-        const ownedTickets = {};
+        const ownedTickets = [];
 
-        for (let i = 0; i > -1; i++) {
-            const group = result.getUint256(i).toString();
-            ownedTickets[group] = [];
+        for (let i = 2; i > -1; i++) {
+            const group = Number(toHexString(result.getBytes32(i)));
+            ownedTickets.push([]);
 
-            const numberOfTickets = result.getUint256(++i).toNumber();
+            const numberOfTickets = Number(toHexString(result.getBytes32(++i)));
             if (numberOfTickets == 0) {
                 break;
             }
 
             for (let ticketIndex = 1; ticketIndex < numberOfTickets + 1; ticketIndex++) {
-                ownedTickets[group].push(result.getUint256(ticketIndex + i).toString());
+                ownedTickets[group].push(
+                    new BigNumber(
+                        toHexString(result.getBytes32(ticketIndex + i))
+                    ).div(100000000).toString());
             }
 
             i += numberOfTickets;
@@ -70,6 +73,8 @@ export class TicketsStore extends BaseContract {
     }
 
     async resell (groupID, ticketID, desiredPrice) {
+        console.log(ticketID)
+        console.log(desiredPrice)
         const fnParams = new ContractFunctionParams()
             .addUint256(new BigNumber(groupID))
             .addUint256(new BigNumber(ticketID))
@@ -80,6 +85,8 @@ export class TicketsStore extends BaseContract {
     }
 
     async refund (groupID, ticketID) {
+        console.log(groupID)
+        console.log(ticketID)
         const fnParams = new ContractFunctionParams()
             .addUint256(new BigNumber(groupID))
             .addUint256(new BigNumber(ticketID));
@@ -91,4 +98,17 @@ export class TicketsStore extends BaseContract {
     async withdraw () {
         await super.broadcast(FUNCTION_NAMES.WITHDRAW, null);
     }
+}
+
+function toHexString (array) {
+    let value = '0x';
+    for (let i = 0; i < array.length; i++) {
+        let hex = Number(array[i]).toString(16);
+        if (hex.length == 1) {
+            hex = '0' + hex;
+        }
+        value += hex;
+    }
+
+    return value;
 }

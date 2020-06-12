@@ -61,11 +61,11 @@ class UserBaseComponent extends Component {
             password: this.state.passwordText
         };
 
-        // const hederaAccount = this.processUserData(userDetails);
+        const hederaAccount = await this.processUserData(userDetails);
 
         // Load the account into browser memory
-        // localStorage.setItem('userDetails', userDetails);
-        // localStorage.setItem('hederaAccount', hederaAccount);
+        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        localStorage.setItem('hederaAccount', JSON.stringify(hederaAccount));
 
         this.setState({ redirect: true });
     }

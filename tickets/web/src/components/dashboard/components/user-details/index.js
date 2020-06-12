@@ -6,7 +6,7 @@ import { AES, enc } from 'crypto-js'
 
 import { UserDetailsView } from './view';
 
-import * as HederaSDK from '../../../../sdk';
+import { HederaSDK } from '../../../../sdk';
 
 class UserDetailsComponent extends Component {
 
@@ -14,15 +14,19 @@ class UserDetailsComponent extends Component {
         balance: 0
     }
 
-    async componentDidMount () {
-        // const userData = localStorage.getItem('userDetails');
-        // const hederaAccount = localStorage.getItem('hederaAccount');
-        // const privateKey = AES.decrypt(
-        //     hederaAccount.encKey, userData.password
-        // ).toString(enc.Utf8);
+    async componentWillMount () {
+        this.userData = JSON.parse(localStorage.getItem('userDetails'));
+        const hederaAccount = JSON.parse(localStorage.getItem('hederaAccount'));
+        const privateKey = AES.decrypt(
+            hederaAccount.encKey, this.userData.password
+        ).toString(enc.Utf8);
 
-        // this.hederaSDK = HederaSDK(hederaAccount.name, privateKey);
-        // this.setState({ balance: await this.hederaSDK.contract.withdrawalBalance() });
+        this.hederaSDK = HederaSDK.init(hederaAccount.name, privateKey);
+
+        this.withdraw = this.withdraw.bind(this);
+        this.setState({
+            balance: await this.hederaSDK.contract.withdrawalBalance()
+        })
     }
 
     render () {
@@ -34,8 +38,8 @@ class UserDetailsComponent extends Component {
     }
 
     async withdraw () {
-        // await this.hederaSDK.contract.withdraw();
-        // this.setState({ balance: 0 });
+        await this.hederaSDK.contract.withdraw();
+        this.setState({ balance: 0 });
     }
 }
 

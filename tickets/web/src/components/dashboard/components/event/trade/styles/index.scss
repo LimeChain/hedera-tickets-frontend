@@ -12,6 +12,14 @@
   position: relative;
   border-radius: 10%;
   margin: 10px;
+
+  &:hover  {
+    transform: rotateX(7deg) translateY(-6px);
+
+    &::after {
+      transform: translateY(0%);
+    }
+  }
 }
 
 .groups-card-cover {
@@ -32,6 +40,14 @@
   will-change: transform;
   transform: skewX(.001deg);
   transition: transform .35s ease-in-out;
+
+  &:hover  {
+    transform: rotateX(7deg) translateY(-6px);
+
+    &::after {
+      transform: translateY(0%);
+    }
+  }
 }
 
 .groups-text{
@@ -43,14 +59,59 @@
 .trade-container {
   width: 100%;
   display: flex;
-  
-  // justify-content: center;
-  // text-align: center;
-  // align-content: center;
-  // align-items: center;
+  padding-top: 50%;
 }
 
 .chart {
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  padding-top: 2%;
+}
+
+.trade-body{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.button-group{
+  padding-top: 2%;
+  width: 100%;
+}
+
+.buy-submit {
+  cursor: pointer;
+  background: none;
+  width: 15%;
+  margin: 10px;
+  border: 1px solid #d1e6cf;
+  border-radius: 25px;
+  color: #466043;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  font-size: 19px;
+  font-size: 1.2rem;
+  font-family: roboto;
+  font-weight: 300;
+  line-height: 2.5em;
+  margin-top: auto;
+  margin-bottom: 25px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  background:  #d1e6cf;
+}
+
+.buy-submit:hover{
+  background:  #c1d1c0;
+}
+
+.price-text{
+  font-size: 20px;
+  margin-top: 2%;
+  padding: 10px;
+  background:  #d1e6cf;
+  width: 100%;
+  border-radius: 25px;
 }

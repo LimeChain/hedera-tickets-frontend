@@ -1,5 +1,6 @@
-import BaseClient from './../base-client';
+import BigNumber from 'bignumber.js'
 
+import BaseClient from './../base-client';
 import connection from './connection.json';
 
 class HederaAPIClient extends BaseClient {
@@ -31,20 +32,30 @@ class HederaAPIClient extends BaseClient {
         return result.data;
     }
 
-    async registerEvent (eventDetails) {
+    async updatePrice (ticketGroupID) {
         await super.executePOSTRequest(
-            connection.url + connection.ENDPOINTS.EVENT.CREATE,
-            eventDetails
+            connection.url + connection.ENDPOINTS.EVENT.UPDATE_PRICE,
+            { group: ticketGroupID }
         );
     }
 
-
-    async getLastAmountForGroup (groupID) {
-        // Todo: implement
+    async getLastPriceForGroup (groupID) {
+        const result = await super.executePOSTRequest(
+            connection.url + connection.ENDPOINTS.EVENT.PRICE,
+            { group: groupID }
+        )
+        return new BigNumber(result.data)
     }
 
-    async getEventGroups (eventName) {
-        // Todo: implement
+    async getSellHistory (groupID) {
+        const result = await super.executePOSTRequest(
+            connection.url + connection.ENDPOINTS.EVENT.HISTORY,
+            { group: groupID }
+        )
+
+        console.log(result)
+
+        return result.data
     }
 }
 

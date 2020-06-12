@@ -1,5 +1,9 @@
 import { BigNumber } from 'bignumber.js';
-import { ContractCallQuery, ContractExecuteTransaction, ContractFunctionParams, Hbar } from "@hashgraph/sdk";
+import {
+    ContractCallQuery,
+    ContractExecuteTransaction,
+    Hbar
+} from "@hashgraph/sdk";
 
 export class BaseContract {
 
@@ -11,7 +15,7 @@ export class BaseContract {
     async read (name, args) {
         return new ContractCallQuery()
             .setContractId(this.contractID)
-            .setGas(1000)
+            .setGas(200000)
             .setFunction(name, args)
             .execute(this.provider.client)
     }
@@ -21,7 +25,7 @@ export class BaseContract {
             .setGas(200000)
             .setFunction(name, args)
             .setContractId(this.contractID)
-            .setPayableAmount(new Hbar(new BigNumber(payableAmount)))
+            .setPayableAmount(Hbar.fromTinybar(new BigNumber(payableAmount)))
             .execute(this.provider.client))
             .getReceipt(this.provider.client);
     }

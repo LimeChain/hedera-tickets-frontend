@@ -4,23 +4,29 @@ import React from 'react';
 import { Component } from 'react';
 import { AES, enc } from 'crypto-js'
 
-import * as HederaSDK from '../../../../../sdk';
+import { HederaSDK } from '../../../../../sdk';
 
 import { MyTicketsView } from './view';
 
 class MyTicketsComponent extends Component {
 
+    state = {
+        tickets: []
+    }
 
     async componentDidMount () {
-        // const userData = localStorage.getItem('userDetails');
-        // const hederaAccount = localStorage.getItem('hederaAccount');
-        // const privateKey = AES.decrypt(
-        //     hederaAccount.encKey, userData.password
-        // ).toString(enc.Utf8);
+        const userData = JSON.parse(localStorage.getItem('userDetails'));
+        const hederaAccount = JSON.parse(localStorage.getItem('hederaAccount'));
+        const privateKey = AES.decrypt(
+            hederaAccount.encKey, userData.password
+        ).toString(enc.Utf8);
 
-        // this.hederaSDK = HederaSDK(hederaAccount.name, privateKey);
-        // this.tickets = await this.hederaSDK.contract.ownedTickets();
+        this.hederaSDK = HederaSDK.init(hederaAccount.name, privateKey);
         this.refund = this.refund.bind(this);
+
+        this.setState({
+            tickets: await this.hederaSDK.contract.ownedTickets()
+        });
     }
 
 
@@ -32,10 +38,13 @@ class MyTicketsComponent extends Component {
         );
     }
 
-    async refund (ticket) {
-        // await this.hederaSDK.contract.refund(ticket.group, ticket.id);
+    async refund (group, id) {
+        await this.hederaSDK.contract.refund(group, id);
+        this.state.tickets[group][id] = 0;
+        this.setState({
+            tickets: this.state.tickets
+        })
     }
-
 }
 
 export default MyTicketsComponent;
