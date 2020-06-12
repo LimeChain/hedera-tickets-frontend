@@ -1,4 +1,7 @@
-# EventCo Front-End
+<p align="center"><i><img src="./EventCo.png"> </i><p>
+
+# EventCo Front-End 
+
 
 ![App-architecture](./TicketsArchitecture.png)
 
