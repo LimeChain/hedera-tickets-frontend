@@ -1,4 +1,4 @@
-# Hedera Tickets front-end
+# EventCo Front-End
 
 ![App-architecture](./TicketsArchitecture.png)
 
